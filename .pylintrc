@@ -1,0 +1,4 @@
+[MASTER]
+extension-pkg-whitelist=pygame
+disable=E0401, # unable to import error
+        C0111, # missing docstring
