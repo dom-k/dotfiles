@@ -1,11 +1,11 @@
 runtime! debian.vim
 
 syntax on
-
-
-" Jump to the last position when reopening a file.
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
+" 
+" 
+" " Jump to the last position when reopening a file.
+" au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" 
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
@@ -16,11 +16,9 @@ set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 set wildmenu		" Better command-line completion
 set number
-set relativenumber
 set confirm		" Confirm dialog asking if files should be saved.
 set nocompatible " Required for vimwiki.
 set colorcolumn=80
-set cursorcolumn
 
 " Indentation
 set tabstop=2		" Width of a tab character in spaces.
@@ -35,12 +33,14 @@ execute pathogen#helptags()
 filetype plugin indent on
 
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4
-
+autocmd Filetype python nmap <buffer> <F5> :w<bar>!python3 %<CR>
 autocmd Filetype pascal nmap <buffer> <F5> :w<bar>!fpc % && ./%:r<CR>
+autocmd Filetype tex nmap <buffer> <F5> :w<bar>!pdflatex %<CR>
 
 " Theme
-colorscheme jellybeans
+set termguicolors
 set background=dark
+colorscheme gruvbox
 
 " Key remapping
 nnoremap t <C-]>
@@ -48,8 +48,8 @@ nnoremap t <C-]>
 " vimtex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
-set conceallevel=1
-let g:tex_conceal='abdmg'
+" set conceallevel=1
+" let g:tex_conceal='abdmg'
 
 " fzf plugin
 set rtp+=/usr/bin/fzf
@@ -59,3 +59,17 @@ let b:ale_fixers = {'python': ['autopep8']}
 let b:ale_linters = {'python': ['pylint']}
 let g:ale_fix_on_save = 1
 
+" GUI options
+set guioptions=c
+set guifont=Hack\ 12
+
+" ultisnips plugin
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
