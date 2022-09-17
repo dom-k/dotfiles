@@ -112,7 +112,6 @@ call plug#begin('~/local/share/nvim/plugged')
 
 Plug 'EdenEast/nightfox.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'morhetz/gruvbox'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'vimwiki/vimwiki'
@@ -120,9 +119,25 @@ Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
+" if strftime("%H") < 17
+"   colorscheme tokyonight-day
+" else
+"   colorscheme tokyonight-night
+" endif
+colorscheme tokyonight-night
+
 let g_ale_fix_on_save = 1
 
-colorscheme nightfox
+let g:vimwiki_auto_header = 1
+let g:netrw_liststyle=3
+
+lua << END
+require('lualine').setup()
+require('nvim-tree').setup()
+END
