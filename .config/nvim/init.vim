@@ -50,10 +50,13 @@ set autoindent
 set ruler
 
 " Display a vertical line at specific amount of characters.
-set cc=80
+" set cc=80
 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
+
+" Highlight line at cursor position.
+set cursorline
 
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
@@ -124,20 +127,23 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
+colorscheme tokyonight
 
-" if strftime("%H") < 17
-"   colorscheme tokyonight-day
-" else
-"   colorscheme tokyonight-night
-" endif
-colorscheme tokyonight-night
+if strftime("%H") < 17
+  set background=light
+else
+  set background=dark
+endif
 
 let g_ale_fix_on_save = 1
-
 let g:vimwiki_auto_header = 1
 let g:netrw_liststyle=3
 
 lua << END
-require('lualine').setup()
+require('lualine').setup {
+  options = {
+    theme = 'tokyonight'
+  }
+}
 require('nvim-tree').setup()
 END
