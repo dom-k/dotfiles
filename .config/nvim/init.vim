@@ -96,16 +96,18 @@ set pastetoggle=<F11>
 
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
+set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4
-autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Shortcuts
 autocmd Filetype rust nmap <buffer> <F5> :w<bar>!rustc % -o %:r && ./%:r<CR>
 autocmd Filetype c nmap <buffer> <F5> :w<bar>!gcc % -o %:r && ./%:r<CR>
+autocmd Filetype python nmap <buffer> <F5> :w<bar>!python3 %<CR>
+autocmd Filetype tex nmap <buffer> <F5> :w<bar>!pdflatex %<CR>
 
 " Key remapping
 " Jump to tag with t and jump back with Ctrl-t, as remapped here:
@@ -125,18 +127,20 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 colorscheme tokyonight
 
-if strftime("%H") < 17
-  set background=light
-else
-  set background=dark
-endif
+" if strftime("%H") < 17 && strftime("%H") > 9
+"   set background=light
+" else
+"   set background=dark
+" endif
 
 let g_ale_fix_on_save = 1
 let g:vimwiki_auto_header = 1
+let g:vimwiki_global_ext = 0 " do not use vimwiki filetype outside of vimwiki directory
 let g:netrw_liststyle=3
 
 lua << END
