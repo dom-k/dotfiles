@@ -8,9 +8,6 @@ runtime! debian.vim
 
 syntax on
 
-colorscheme default
-set background=dark
-
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -43,9 +40,11 @@ set guifont=Monospace\ 14
 " set guioptions=c        " Use console dialogs instead of popup dialogs
 if has("gui_running")
   set lines=35 columns=150
-  set background=light
 endif
-" Intendation options
+
+"-------------------------------------------------------------------------------
+" Indendation settings
+"-------------------------------------------------------------------------------
 set shiftwidth=2
 set softtabstop=2
 set expandtab
@@ -66,6 +65,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-fugitive'
 Plug 'altercation/vim-colors-solarized'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 "-------------------------------------------------------------------------------
 
@@ -80,6 +80,13 @@ let g:netrw_liststyle=3
 "-------------------------------------------------------------------------------
 
 "-------------------------------------------------------------------------------
+" Ultisnips
+"-------------------------------------------------------------------------------
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+"-------------------------------------------------------------------------------
 " Keyboard shortcuts
 "-------------------------------------------------------------------------------
 autocmd Filetype python nmap <buffer> <F5> :w<bar>!python3 % <CR>
@@ -87,4 +94,15 @@ autocmd Filetype pascal nmap <buffer> <F5> :w<bar>!fpc % && ./%:r<CR>
 autocmd Filetype markdown nmap <buffer> <F5> :w<bar>!pandoc % -o %:r.pdf<CR>
 autocmd Filetype c nmap <buffer> <F5> :w<bar>!gcc % -o %:r && ./%:r<CR>
 autocmd Filetype php nmap <buffer> <F5> :w<bar>!php % <CR>
-"
+autocmd Filetype tex nmap <buffer> <F5> :w<bar>!pdflatex % <CR>
+
+
+"-------------------------------------------------------------------------------
+" Colorscheme settings
+"-------------------------------------------------------------------------------
+colorscheme default
+set background=dark
+if has("gui_running")
+  colorscheme default
+  set background=light
+endif
