@@ -72,9 +72,7 @@ call plug#end()
 "-------------------------------------------------------------------------------
 " vimwiki
 "-------------------------------------------------------------------------------
-let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_auto_header = 1
-let g:vimwiki_list = [{'path': '~/Documents/dev-vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0 " do not use vimwiki filetype outside of vimwiki directory
 let g:netrw_liststyle=3
 "-------------------------------------------------------------------------------
