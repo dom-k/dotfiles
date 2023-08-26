@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
-let g:netrw_dirhist_6='/home/dominik/code/uni/semester-5/1659-grundlagen-th-inf/ea1'
-let g:netrw_dirhist_5='/home/dominik/code/id-management-laravel/id-management-laravel/routes'
-let g:netrw_dirhist_4='/home/dominik/code/id-management-laravel/id-management-laravel'
-let g:netrw_dirhist_3='/home/dominik/code/id-management-laravel'
-let g:netrw_dirhist_2='/tmp'
-let g:netrw_dirhist_1='/home/dominik/code/id-management-cli/po_import'

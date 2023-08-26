@@ -1,11 +1,3 @@
-" All Debian-specific settings are defined in $VIMRUNTIME/debian.vim and
-" sourced by the call to :runtime you can find below.  If you wish to change
-" any of those settings, you should do it in this file or
-" /etc/vim/vimrc.local, since debian.vim will be overwritten everytime an
-" upgrade of the vim packages is performed. It is recommended to make changes
-" after sourcing debian.vim so your settings take precedence.
-runtime! debian.vim
-
 syntax on
 
 
@@ -63,9 +55,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-fugitive'
-Plug 'altercation/vim-colors-solarized'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 call plug#end()
 "-------------------------------------------------------------------------------
 
@@ -78,13 +67,6 @@ let g:netrw_liststyle=3
 "-------------------------------------------------------------------------------
 
 "-------------------------------------------------------------------------------
-" Ultisnips
-"-------------------------------------------------------------------------------
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-
-"-------------------------------------------------------------------------------
 " Keyboard shortcuts
 "-------------------------------------------------------------------------------
 autocmd Filetype python nmap <buffer> <F5> :w<bar>!python3 % <CR>
@@ -94,13 +76,4 @@ autocmd Filetype c nmap <buffer> <F5> :w<bar>!gcc % -o %:r && ./%:r<CR>
 autocmd Filetype php nmap <buffer> <F5> :w<bar>!php % <CR>
 autocmd Filetype tex nmap <buffer> <F5> :w<bar>!pdflatex % <CR>
 
-
-"-------------------------------------------------------------------------------
-" Colorscheme settings
-"-------------------------------------------------------------------------------
-colorscheme default
-set background=dark
-if has("gui_running")
-  colorscheme default
-  set background=light
-endif
+colorscheme lunaperche
